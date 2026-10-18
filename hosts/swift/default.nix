@@ -19,6 +19,7 @@
   services.zfs.trim.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "i915.force_probe=!*"
     "xe.force_probe=*"
@@ -47,11 +48,14 @@
   # Graphics & Intel Drivers
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
     ];
   };
+  services.hardware.bolt.enable = true;
+  services.xserver.videoDrivers = ["amdgpu" ];
 
   # System User
   users.users.cg = {
