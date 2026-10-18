@@ -2,6 +2,7 @@
   imports = [ 
       ./hardware-configuration.nix 
       ../../modules/ssh-secret.nix
+      ../../modules/tailscale.nix
     ];
 
   sops.defaultSopsFile = ../../secrets.yaml;

@@ -3,6 +3,11 @@
       ../../modules/ssh-secret.nix 
     ];
 
+  sops = {
+    defaultSopsFile = ../../secrets.yaml;
+    age.keyFile = "/var/lib/sops-nix/keys.txt";
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   wsl.enable = true;
