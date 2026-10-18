@@ -5,12 +5,15 @@
       ../../modules/tailscale.nix
     ];
 
-  sops.defaultSopsFile = ../../secrets.yaml;
-  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
-  sops.secrets."wifi_password" = {
-    owner = "root";
-    group = "root";
-    mode = "0400";
+  sops = {
+    defaultSopsFile = ../../secrets.yaml;
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+
+    secrets."wifi_password" = {
+      owner = "root";
+      group = "root";
+      mode = "0400";
+    };
   };
 
   # ZFS and Bootloader Settings
