@@ -4,6 +4,7 @@
     ../../modules/ssh-secret.nix
     ../../modules/tailscale.nix
     ../../modules/home-wifi.nix
+    ../../modules/desktop-niri.nix
   ];
 
   # Global sops-nix configuration for this host
@@ -63,13 +64,6 @@
     git
     wget
     curl
-    niri
-    alacritty
-    fuzzel
-    xwayland-satellite
-    waybar
-    firefox
-    vim
   ];
 
   # OpenSSH Daemon
