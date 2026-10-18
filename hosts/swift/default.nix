@@ -1,19 +1,15 @@
 { config, lib, pkgs, ... }: {
-  imports = [ 
-      ./hardware-configuration.nix 
-      ../../modules/ssh-secret.nix
-      ../../modules/tailscale.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/ssh-secret.nix
+    ../../modules/tailscale.nix
+    ../../modules/home-wifi.nix
+  ];
 
+  # Global sops-nix configuration for this host
   sops = {
     defaultSopsFile = ../../secrets.yaml;
-    age.keyFile = "/var/lib/sops-nix/key.txt";
-
-    secrets."wifi_password" = {
-      owner = "root";
-      group = "root";
-      mode = "0400";
-    };
+    age.keyFile = "/var/lib/sops-nix/keys.txt";
   };
 
   # ZFS and Bootloader Settings
@@ -29,27 +25,6 @@
   ];
 
   networking.hostName = "swift";
-
-  # Network & WiFi
-  networking.networkmanager.enable = true;
-  networking.networkmanager.ensureProfiles.profiles = {
-    "J&C" = {
-      connection = {
-        id = "J&C";
-        type = "wifi";
-      };
-      wifi = {
-        mode = "infrastructure";
-        ssid = "J&C";
-      };
-      wifi-security = {
-        key-mgmt = "sae";
-        pmf = 3;
-	psk = "@wifi_password@";
-      };
-    };
-  };
-
   time.timeZone = "US/Central";
 
   # Audio & Display Manager (Greetd + Niri)
@@ -62,7 +37,6 @@
     enable = true;
     settings = {
       default_session = {
-        # Changed from pkgs.greetd.tuigreet to pkgs.tuigreet
         command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
         user = "greeter";
       };
