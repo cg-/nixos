@@ -34,6 +34,7 @@
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
           {
+	    home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.cg = import ./home/cg/home.nix;
           }
           ./hosts/wsl
@@ -46,6 +47,7 @@
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
           {
+	    home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.cg = import ./home/cg/home.nix;
           }
           ./hosts/swift
@@ -56,10 +58,11 @@
     darwinConfigurations = {
       macbook = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        modules = [
+	modules = [
           home-manager.darwinModules.home-manager
-          sops-nix.nixosModules.sops
+          sops-nix.darwinModules.sops
           {
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.cg = import ./home/cg/home.nix;
           }
           ./darwin/macbook.nix

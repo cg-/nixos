@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+      ./hardware-configuration.nix 
+      ../../modules/ssh-secret.nix
+    ];
 
   sops.defaultSopsFile = ../../secrets.yaml;
   sops.age.keyFile = "/var/lib/sops-nix/key.txt";

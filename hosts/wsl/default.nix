@@ -1,5 +1,7 @@
 { config, pkgs, ... }: {
-  imports = [ ];
+  imports = [ 
+      ../../modules/ssh-secret.nix 
+    ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
