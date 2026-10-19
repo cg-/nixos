@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   imports = [ 
       ../../modules/ssh-secret.nix 
+      ../../modules/user-cg.nix 
     ];
 
   sops = {
@@ -14,12 +15,6 @@
   wsl.enable = true;
   wsl.defaultUser = "cg";
   networking.hostName = "wsl";
-
-  users.users.cg = {
-    isNormalUser = true;
-    description = "Cole Grim";
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
 
   system.stateVersion = "26.05";
 }

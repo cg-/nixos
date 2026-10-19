@@ -55,6 +55,18 @@
     initExtra = ''
       # Kali Linux style prompt (red user@host, blue path)
       PS1='\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+      fastdl() {
+      if [ -z "$1" ]; then
+        echo "Usage: fastdl <URL>"
+        return 1
+      fi
+      aria2c \
+        --max-connection-per-server=16 \
+        --split=16 \
+        --min-split-size=1M \
+        --continue=true \
+        "$@"
+      }
     '';
   };
 
@@ -65,5 +77,6 @@
     vim
     age
     sops
+    aria2
   ];
 }

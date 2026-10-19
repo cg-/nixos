@@ -53,6 +53,19 @@
           ./hosts/swift
         ];
       };
+
+      vm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
+          {
+	    home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.cg = import ./home/cg/home.nix;
+          }
+          ./hosts/vm
+        ];
+      };
     };
 
     darwinConfigurations = {

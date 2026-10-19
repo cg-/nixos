@@ -5,6 +5,7 @@
     ../../modules/tailscale.nix
     ../../modules/home-wifi.nix
     ../../modules/desktop-niri.nix
+    ../../modules/user-cg.nix
   ];
 
   # Global sops-nix configuration for this host
@@ -56,12 +57,6 @@
   };
   services.hardware.bolt.enable = true;
   services.xserver.videoDrivers = ["amdgpu" ];
-
-  # System User
-  users.users.cg = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
 
   # System Packages for the Laptop environment
   environment.systemPackages = with pkgs; [
