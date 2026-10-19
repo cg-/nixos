@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
   imports = [
-    #./hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../modules/ssh-secret.nix
     ../../modules/tailscale.nix
     ../../modules/desktop-niri.nix
@@ -13,7 +13,7 @@
     age.keyFile = "/var/lib/sops-nix/keys.txt";
   };
 
-  services.hypervGuest.enable = true;
+  virtualisation.hypervGuest.enable = true;
 
   # 2. Force load synthetic Hyper-V drivers early in initrd for fast and stable hardware handoff
   boot.initrd.kernelModules = [
