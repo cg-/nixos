@@ -7,7 +7,6 @@
     ../../modules/user-cg.nix
   ];
 
-  # Global sops-nix configuration for this host
   sops = {
     defaultSopsFile = ../../secrets.yaml;
     age.keyFile = "/var/lib/sops-nix/keys.txt";
@@ -15,15 +14,12 @@
 
   virtualisation.hypervGuest.enable = true;
 
-  # 2. Force load synthetic Hyper-V drivers early in initrd for fast and stable hardware handoff
   boot.initrd.kernelModules = [
     "hv_vmbus"
     "hv_storvsc"
     "hv_netvsc"
-    "hyperv_fb"
   ];
 
-  # 3. Ensure NetworkManager is explicitly active (referenced in your user groups)
   networking.networkmanager.enable = true;
 
   # ZFS and Bootloader Settings
