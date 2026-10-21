@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, ... }@inputs: {
     nixosConfigurations = {
@@ -48,7 +53,7 @@
           sops-nix.nixosModules.sops
           {
 	    home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.cg = import ./home/cg/home.nix;
+            home-manager.users.cg = import ./home/cg/desktop-plasma-home.nix;
           }
           ./hosts/swift
         ];

@@ -4,9 +4,12 @@
     ../../modules/ssh-secret.nix
     ../../modules/tailscale.nix
     ../../modules/home-wifi.nix
-    ../../modules/desktop-niri.nix
+    ../../modules/home-smb.nix
+    ../../modules/desktop-plasma.nix
+    ../../modules/desktop-apps.nix
     ../../modules/user-cg.nix
   ];
+  nixpkgs.config.allowUnfree = true;
 
   # Global sops-nix configuration for this host
   sops = {
@@ -29,22 +32,6 @@
 
   networking.hostName = "swift";
   time.timeZone = "US/Central";
-
-  # Audio & Display Manager (Greetd + Niri)
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
-        user = "greeter";
-      };
-    };
-  };
 
   # Graphics & Intel Drivers
   hardware.graphics = {

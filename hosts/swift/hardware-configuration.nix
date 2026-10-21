@@ -8,33 +8,30 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "zroot/root";
+    { device = "zroot/local/root";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C418-C6A4";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+  fileSystems."/zroot" =
+    { device = "zroot";
+      fsType = "zfs";
     };
 
   fileSystems."/home" =
-    { device = "zroot/home";
+    { device = "zroot/local/home";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
-  fileSystems."/nix" =
-    { device = "zroot/nix";
-      fsType = "zfs";
-      options = [ "zfsutil" ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/8D43-BBC8";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices = [ ];

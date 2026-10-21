@@ -4,6 +4,8 @@
       ../../modules/user-cg.nix 
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
   sops = {
     defaultSopsFile = ../../secrets.yaml;
     defaultSopsFormat = "yaml";

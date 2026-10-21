@@ -6,6 +6,7 @@
     ../../modules/desktop-niri.nix
     ../../modules/user-cg.nix
   ];
+  nixpkgs.config.allowUnfree = true;
 
   sops = {
     defaultSopsFile = ../../secrets.yaml;
