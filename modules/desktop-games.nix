@@ -5,7 +5,10 @@
 
   environment.systemPackages = with pkgs; [
     faugus-launcher
-
+    xivlauncher
+    gamescope
+    gamemode
+    mangohud
   ];
   programs.steam = {
     enable = true;
