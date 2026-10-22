@@ -5,6 +5,7 @@
     ../../modules/tailscale.nix
     ../../modules/home-wifi.nix
     ../../modules/home-smb.nix
+    ../../modules/home-resilio.nix
     ../../modules/desktop-plasma.nix
     ../../modules/desktop-apps.nix
     ../../modules/desktop-games.nix
@@ -20,6 +21,7 @@
 
   # ZFS and Bootloader Settings
   networking.hostId = "84251a3f";
+  networking.firewall.enable = true;
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
   boot.loader.systemd-boot.enable = true;

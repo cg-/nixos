@@ -29,8 +29,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-xivlauncher-rb = {
+      url = "github:drakon64/nixos-xivlauncher-rb";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
-  outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, nixos-xivlauncher-rb, ... }@inputs: {
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -50,6 +55,7 @@
         system = "x86_64-linux";
         modules = [
           home-manager.nixosModules.home-manager
+          nixos-xivlauncher-rb.nixosModules.default
           sops-nix.nixosModules.sops
           {
 	    home-manager.extraSpecialArgs = { inherit inputs; };

@@ -87,5 +87,6 @@
     age
     sops
     aria2
+    cacert
   ];
 }

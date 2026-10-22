@@ -5,10 +5,10 @@
 
   environment.systemPackages = with pkgs; [
     faugus-launcher
-    xivlauncher
     gamescope
     gamemode
     mangohud
+    (xivlauncher-rb.override { useGameMode = true; })
   ];
   programs.steam = {
     enable = true;
