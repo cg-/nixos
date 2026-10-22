@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, modulesPath, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/ssh-secret.nix
@@ -13,7 +13,6 @@
   nixpkgs.config.allowUnfree = true;
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
-  networking.useDHCP = true;
 
   sops = {
     defaultSopsFile = ../../secrets.yaml;
