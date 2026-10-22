@@ -11,7 +11,6 @@
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
       wallpaper = ../../assets/wallpaper.png;
-      wallpaperFillMode = "zoom";
     };
 
     panels = [
