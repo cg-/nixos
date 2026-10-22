@@ -3,23 +3,23 @@
     ./hardware-configuration.nix
     ../../modules/ssh-secret.nix
     ../../modules/tailscale.nix
-    ../../modules/desktop-niri.nix
+    ../../modules/home-smb.nix
+    ../../modules/home-resilio.nix
+    ../../modules/desktop-plasma.nix
+    ../../modules/desktop-apps.nix
     ../../modules/user-cg.nix
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
   nixpkgs.config.allowUnfree = true;
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
+  networking.useDHCP = true;
 
   sops = {
     defaultSopsFile = ../../secrets.yaml;
     age.keyFile = "/var/lib/sops-nix/keys.txt";
   };
 
-  virtualisation.hypervGuest.enable = true;
-
-  boot.initrd.kernelModules = [
-    "hv_vmbus"
-    "hv_storvsc"
-    "hv_netvsc"
-  ];
 
   networking.networkmanager.enable = true;
 
