@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   hardware.xone.enable = true;
+  hardware.xpad-noone.enable = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
     faugus-launcher
