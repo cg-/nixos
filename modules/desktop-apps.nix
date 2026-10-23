@@ -9,6 +9,14 @@
     microsoft-edge
     fastmail-desktop
     localsend
+    slack
+    spotify
+  ];
+
+  services.flatpak.enable = true;
+  services.flatpak.packages = [
+    "com.github.shakeelosmani.avd_feed_connect"
+    "com.usebottles.bottles"
   ];
 
   environment.etc."opt/edge/policies/managed/default_search_engine.json".text = builtins.toJSON {

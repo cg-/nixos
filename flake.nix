@@ -2,8 +2,11 @@
   description = "Cole's Nix";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+    punktfunk = {
+      url = "git+https://git.unom.io/unom/punktfunk?ref=nix-stable";
+    };
+    nixpkgs.follows = "punktfunk/nixpkgs";
+
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +38,7 @@
     };
 
   };
-  outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, nixos-xivlauncher-rb, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, nixos-xivlauncher-rb, punktfunk, ... }@inputs: {
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -54,6 +57,7 @@
       swift = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          punktfunk.nixosModules.default
           home-manager.nixosModules.home-manager
           nixos-xivlauncher-rb.nixosModules.default
           sops-nix.nixosModules.sops
@@ -68,6 +72,7 @@
       metal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          punktfunk.nixosModules.default
           home-manager.nixosModules.home-manager
           nixos-xivlauncher-rb.nixosModules.default
           sops-nix.nixosModules.sops
