@@ -37,8 +37,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
   };
-  outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, nixos-xivlauncher-rb, punktfunk, ... }@inputs: {
+
+  outputs = { self, nixpkgs, nixos-wsl, darwin, home-manager, sops-nix, nixos-xivlauncher-rb, punktfunk, nix-flatpak, ... }@inputs: {
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -61,6 +65,7 @@
           home-manager.nixosModules.home-manager
           nixos-xivlauncher-rb.nixosModules.default
           sops-nix.nixosModules.sops
+          nix-flatpak.nixosModules.nix-flatpak
           {
 	    home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.cg = import ./home/cg/desktop-plasma-home.nix;
@@ -76,6 +81,7 @@
           home-manager.nixosModules.home-manager
           nixos-xivlauncher-rb.nixosModules.default
           sops-nix.nixosModules.sops
+          nix-flatpak.nixosModules.nix-flatpak
           {
 	    home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.cg = import ./home/cg/desktop-plasma-home.nix;
