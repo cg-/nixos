@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./dod-stuff.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     microsoft-edge
     fastmail-desktop
