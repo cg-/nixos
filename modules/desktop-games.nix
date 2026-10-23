@@ -25,6 +25,7 @@
     mangohud
     xivlauncher-rb
     gamepad-tool
+    wowup-cf
   ];
   programs.steam = {
     enable = true;
