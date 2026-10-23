@@ -11,9 +11,13 @@
     localsend
     slack
     spotify
+    freerdp
+    remmina
   ];
 
   services.flatpak.enable = true;
+  services.flatpak.packages = [
+  ];
 
   environment.etc."opt/edge/policies/managed/default_search_engine.json".text = builtins.toJSON {
     DefaultSearchProviderEnabled = true;
