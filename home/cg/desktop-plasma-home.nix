@@ -4,13 +4,30 @@
     inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
-  programs.plasma.enable = true;
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "microsoft-edge.desktop";
+      "x-scheme-handler/http" = "microsoft-edge.desktop";
+      "x-scheme-handler/https" = "microsoft-edge.desktop";
+      "x-scheme-handler/about" = "microsoft-edge.desktop";
+      "x-scheme-handler/unknown" = "microsoft-edge.desktop";
+    };
+  };
 
   programs.plasma = {
+    enable = true;
     workspace = {
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
       wallpaper = ../../assets/wallpaper.png;
+    };
+
+    configFile = {
+      "kdeglobals"."General"."TerminalApplication" = "alacritty";
+      "kdeglobals"."General"."TerminalService" = "alacritty.desktop";
+      "kdeglobals"."General"."BrowserApplication" = "microsoft-edge.desktop";
     };
 
     panels = [
@@ -30,5 +47,15 @@
         ];
       }
     ];
+
+    shortcuts = {
+      "services/org.kde.konsole.desktop"."_launch" = "none";
+    };
+
+    hotkeys.commands."launch-alacritty" = {
+      name = "Launch Alacritty";
+      key = "Ctrl+Alt+T";
+      command = "alacritty";
+    };
   };
 }

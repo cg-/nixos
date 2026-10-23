@@ -29,6 +29,7 @@
     kdePackages.gwenview
     kdePackages.kate
     wl-clipboard
+    alacritty
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
@@ -36,5 +37,6 @@
     kmail
     kdepim-addons
     kdepim-runtime
+    akonadi
   ];
 }
