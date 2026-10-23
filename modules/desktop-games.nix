@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  hardware.xone.enable = true;
+  hardware.steam-hardware.enable = true;
   hardware.xpad-noone.enable = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
@@ -9,7 +9,8 @@
     gamescope
     gamemode
     mangohud
-    xivlauncher
+    xivlauncher-rb
+    gamepad-tool
   ];
   programs.steam = {
     enable = true;
