@@ -2,8 +2,6 @@
 
 {
   sops.secrets = {
-    resilio_username = {};
-    resilio_password = {};
     resilio_license = {
       path = "/mnt/sync/license.btskey";
       owner = "rslsync";
@@ -14,8 +12,6 @@
 
   services.resilio = {
     enable = true;
-    httpLogin = config.sops.placeholder.resilio_username;
-    httpLogin = config.sops.placeholder.resilio_password;
     deviceName = config.networking.hostName;
     directoryRoot = "/mnt/sync";
     enableWebUI = true;
