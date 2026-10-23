@@ -37,6 +37,7 @@
         # Setting floating to false removes the margin/gap around the panel
         floating = false;
         lengthMode = "fill"; # Or "maximum" depending on your preference
+        screen = 0;
         height = 44;
         
         widgets = [
