@@ -9,7 +9,7 @@
     gamescope
     gamemode
     mangohud
-    (xivlauncher-rb.override { useGameMode = true; })
+    xivlauncher
   ];
   programs.steam = {
     enable = true;

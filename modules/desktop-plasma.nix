@@ -28,6 +28,7 @@
     kdePackages.okular
     kdePackages.gwenview
     kdePackages.kate
+    wl-clipboard
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [

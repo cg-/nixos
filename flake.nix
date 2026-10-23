@@ -65,6 +65,20 @@
         ];
       };
 
+      metal = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          nixos-xivlauncher-rb.nixosModules.default
+          sops-nix.nixosModules.sops
+          {
+	    home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.cg = import ./home/cg/desktop-plasma-home.nix;
+          }
+          ./hosts/metal
+        ];
+      };
+
       vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

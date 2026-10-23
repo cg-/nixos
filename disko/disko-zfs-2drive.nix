@@ -17,10 +17,6 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            win = {
-              size = "256G";
-              type = "0700";
-            };
             zfs = {
               size = "100%";
               content = {
