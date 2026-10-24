@@ -39,7 +39,7 @@
         lengthMode = "fill"; # Or "maximum" depending on your preference
         screen = 0;
         height = 44;
-        
+
         widgets = [
           "org.kde.plasma.kickoff" # Application Launcher
           {
@@ -48,11 +48,12 @@
                 "applications:org.kde.dolphin.desktop"
                 "applications:microsoft-edge.desktop"
                 "applications:fastmail.desktop"
-                "applications:obsidian.desktop"
+                "applications:md.obsidian.Obsidian.desktop"
               ];
             };
           }
           "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.networkmanagement"
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];

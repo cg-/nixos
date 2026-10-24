@@ -1,18 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     zed-editor
     ollama-vulkan
+    nixd
+    nil
   ];
 
   services.ollama = {
     enable = true;
     package = pkgs.ollama-vulkan; 
     loadModels = [
-      "huihui_ai/qwen2.5-coder-abliterate:14b"
       "qwen2.5-coder:14b"
-      "phi4-mini"
+      "llama3-groq-tool-use:8b"
+      "llama3.1:8b"
     ];
     environmentVariables = {
       OLLAMA_KEEP_ALIVE = "2m";

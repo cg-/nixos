@@ -1,5 +1,6 @@
 { config, pkgs, inputs, lib, ... }: {
   imports = [ ];
+  nixpkgs.config.allowUnfree = true;
 
   home.username = "cg";
   home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/cg" else "/home/cg";
@@ -44,7 +45,7 @@
 
   programs.git = {
     enable = true;
-    
+
     # Use the new settings structure
     settings = {
       user = {
@@ -72,14 +73,30 @@
       };
       hour_format = "hour24";
       language_models = {
-        ollama = {
-          api_url = "http://localhost:11434";
+        openai = {
+          "Local Ollama" = {
+            api_url = "http://localhost:11434/v1";
+            available_models = [
+              {
+                name = "llama3-groq-tool-use:8b";
+                display_name = "Llama 3 Groq Tool Use 8B";
+                max_tokens = 16384;
+                supports_tools = true;
+              }
+              {
+                name = "qwen2.5-coder:14b";
+                display_name = "Qwen 2.5 Coder 14B";
+                max_tokens = 32768;
+                supports_tools = true;
+              }
+            ];
+          };
         };
       };
       agent = {
         default_model = {
-          provider = "ollama";
-          model = "phi4-mini";
+          provider = "openai";
+          model = "llama3-groq-tool-use:8b";
         };
         tools = {
           terminal = true;
