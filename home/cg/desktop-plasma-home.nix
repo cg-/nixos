@@ -49,6 +49,7 @@
                 "applications:microsoft-edge.desktop"
                 "applications:fastmail.desktop"
                 "applications:md.obsidian.Obsidian.desktop"
+                "applications:zed.desktop"
               ];
             };
           }
@@ -58,6 +59,17 @@
         ];
       }
     ];
+
+    shortcuts = {
+      "services/org.kde.konsole.desktop"."_launch" = "none";
+    };
+
+    hotkeys.commands."launch-alacritty" = {
+      name = "Launch Alacritty";
+      key = "Ctrl+Alt+T";
+      command = "alacritty";
+    };
+  };
 
     shortcuts = {
       "services/org.kde.konsole.desktop"."_launch" = "none";
