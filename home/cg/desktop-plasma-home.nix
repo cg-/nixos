@@ -47,7 +47,7 @@
                 "applications:microsoft-edge.desktop"
                 "applications:fastmail.desktop"
                 "applications:md.obsidian.Obsidian.desktop"
-                "applications:zed.desktop"
+                "applications:dev.zed.Zed.desktop"
               ];
             };
           }
