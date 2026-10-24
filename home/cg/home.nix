@@ -143,5 +143,6 @@
     sops
     aria2
     cacert
+    just
   ];
 }
