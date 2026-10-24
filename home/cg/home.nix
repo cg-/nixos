@@ -5,6 +5,10 @@
   home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/cg" else "/home/cg";
   home.stateVersion = "26.05";
 
+  home.file.".nixos" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos";
+  };
+
   programs.home-manager.enable = true;
 
   programs.ssh = {
