@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, lib, ... }: {
   imports = [ ];
 
   home.username = "cg";
@@ -8,6 +8,10 @@
   home.file.".nixos" = {
     source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos";
   };
+
+  home.activation.createWorkspace = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p ~/workspace
+  '';
 
   programs.home-manager.enable = true;
 
