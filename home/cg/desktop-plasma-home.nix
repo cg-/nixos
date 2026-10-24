@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }: {
   imports = [
     ./home.nix
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+    inputs.plasma-manager.homeModules.plasma-manager
   ];
 
 
@@ -42,7 +42,16 @@
         
         widgets = [
           "org.kde.plasma.kickoff" # Application Launcher
-          "org.kde.plasma.icontasks" # Task Manager
+          {
+            iconTasks = {
+              launchers = [
+                "applications:org.kde.dolphin.desktop"
+                "applications:microsoft-edge.desktop"
+                "applications:fastmail.desktop"
+              ];
+            };
+          }
+          "org.kde.plasma.marginsseparator"
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];

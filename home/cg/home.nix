@@ -2,18 +2,20 @@
   imports = [ ];
 
   home.username = "cg";
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/cg" else "/home/cg";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/cg" else "/home/cg";
   home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
 
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      Host *
-        IdentityFile ~/.ssh/id_rsa
-	AddKeysToAgent yes
-    '';
+    enableDefaultConfig = false;
+    settings = {
+      "*" = {
+        identityFile = "~/.ssh/id_rsa";
+        addKeysToAgent = "yes";
+      };
+    };
   };
 
   services.ssh-agent.enable = true;

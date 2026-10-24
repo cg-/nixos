@@ -13,10 +13,7 @@
     spotify
     freerdp
     remmina
-  ];
-
-  services.flatpak.enable = true;
-  services.flatpak.packages = [
+    obsidian
   ];
 
   environment.etc."opt/edge/policies/managed/default_search_engine.json".text = builtins.toJSON {

@@ -114,7 +114,7 @@
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.cg = import ./home/cg/home.nix;
           }
-          ./darwin/macbook.nix
+          ./hosts/macbook.nix
         ];
       };
     };

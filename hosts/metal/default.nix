@@ -20,6 +20,7 @@
   };
 
   # ZFS and Bootloader Settings
+  boot.zfs.forceImportRoot = false;
   networking.hostId = "86271a3f";
   networking.firewall.enable = true;
   services.zfs.autoScrub.enable = true;

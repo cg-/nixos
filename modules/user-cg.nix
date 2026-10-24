@@ -2,6 +2,7 @@
   sops.secrets.user_password_hash = {
     neededForUsers = true; 
   };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   users.users.cg = {
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.user_password_hash.path;

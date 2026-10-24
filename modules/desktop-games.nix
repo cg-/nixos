@@ -6,6 +6,25 @@
     trusted-public-keys = [ "punktfunk-cache-1:yhOJmHxzg6tzXpxSFzlYn6Pc6r0jHprsWqt8MZC654o=" ];
   };
 
+  services.flatpak = {
+    enable = true;
+
+    remotes = [
+      {
+        name = "flathub";
+        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      }
+      {
+        name = "GeForceNOW";
+        location = "https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo";
+      }
+    ];
+
+    packages = [
+      { appId = "com.nvidia.geforcenow"; origin = "GeForceNOW"; }
+    ];
+  };
+
   services.punktfunk.host = {
     enable = true;
     users = [ "cg" ];
