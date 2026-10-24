@@ -47,6 +47,9 @@
       intel-media-driver
       intel-vaapi-driver
       vpl-gpu-rt
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
     ];
   };
 

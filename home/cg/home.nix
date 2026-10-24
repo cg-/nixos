@@ -71,6 +71,20 @@
         light = "One Light";
       };
       hour_format = "hour24";
+      language_models = {
+        ollama = {
+          api_url = "http://localhost:11434";
+        };
+      };
+      agent = {
+        default_model = {
+          provider = "ollama";
+          model = "qwen2.5-coder:14b";
+        };
+        tools = {
+          terminal = true;
+        };
+      };
     };
   };
 
