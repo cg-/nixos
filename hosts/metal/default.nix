@@ -9,6 +9,7 @@
     ../../modules/desktop-plasma.nix
     ../../modules/desktop-apps.nix
     ../../modules/desktop-games.nix
+    ../../modules/desktop-dev.nix
     ../../modules/user-cg.nix
   ];
   nixpkgs.config.allowUnfree = true;
