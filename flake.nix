@@ -60,6 +60,7 @@
 
       swift = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           punktfunk.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -76,6 +77,7 @@
 
       metal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           punktfunk.nixosModules.default
           home-manager.nixosModules.home-manager

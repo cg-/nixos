@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   nix.settings = {
@@ -36,7 +36,7 @@
   hardware.steam-hardware.enable = true;
   hardware.xpad-noone.enable = lib.mkForce false;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     faugus-launcher
     discord
     gamescope
@@ -45,6 +45,8 @@
     xivlauncher-rb
     gamepad-tool
     wowup-cf
+  ]) ++ [
+    inputs.punktfunk.packages.${pkgs.system}.punktfunk-client
   ];
   programs.steam = {
     enable = true;
