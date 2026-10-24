@@ -48,6 +48,7 @@
                 "applications:org.kde.dolphin.desktop"
                 "applications:microsoft-edge.desktop"
                 "applications:fastmail.desktop"
+                "applications:obsidian.desktop"
               ];
             };
           }
