@@ -79,7 +79,7 @@
       agent = {
         default_model = {
           provider = "ollama";
-          model = "qwen2.5-coder:14b";
+          model = "phi4-mini";
         };
         tools = {
           terminal = true;
