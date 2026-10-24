@@ -53,7 +53,6 @@
             };
           }
           "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.networkmanagement"
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
