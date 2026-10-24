@@ -4,7 +4,6 @@
     inputs.plasma-manager.homeModules.plasma-manager
   ];
 
-
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -34,14 +33,13 @@
       {
         location = "bottom";
         alignment = "center";
-        # Setting floating to false removes the margin/gap around the panel
         floating = false;
-        lengthMode = "fill"; # Or "maximum" depending on your preference
+        lengthMode = "fill";
         screen = 0;
         height = 44;
 
         widgets = [
-          "org.kde.plasma.kickoff" # Application Launcher
+          "org.kde.plasma.kickoff"
           {
             iconTasks = {
               launchers = [
@@ -59,17 +57,6 @@
         ];
       }
     ];
-
-    shortcuts = {
-      "services/org.kde.konsole.desktop"."_launch" = "none";
-    };
-
-    hotkeys.commands."launch-alacritty" = {
-      name = "Launch Alacritty";
-      key = "Ctrl+Alt+T";
-      command = "alacritty";
-    };
-  };
 
     shortcuts = {
       "services/org.kde.konsole.desktop"."_launch" = "none";
