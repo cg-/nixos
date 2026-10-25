@@ -105,12 +105,14 @@
     };
   };
 
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
   programs.bash = {
     enable = true;
     initExtra = ''
-      # Kali Linux style prompt (red user@host, blue path)
-      PS1='\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
       fastdl() {
       if [ -z "$1" ]; then
         echo "Usage: fastdl <URL>"
