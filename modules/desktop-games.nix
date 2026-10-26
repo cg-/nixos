@@ -6,6 +6,11 @@
     trusted-public-keys = [ "punktfunk-cache-1:yhOJmHxzg6tzXpxSFzlYn6Pc6r0jHprsWqt8MZC654o=" ];
   };
 
+  # Prevent Keychron K10 Pro from being recognized as a joystick/gamepad
+  services.udev.extraRules = ''
+  SUBSYSTEM=="input", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="02a3", ENV{ID_INPUT_JOYSTICK}="0"
+'';
+
   services.flatpak = {
     enable = true;
 
