@@ -74,19 +74,13 @@
       hour_format = "hour24";
       language_models = {
         openai = {
-          "Local Ollama" = {
-            api_url = "http://localhost:11434/v1";
+          "LM Studio" = {
+            api_url = "http://localhost:1234/v1";
             available_models = [
               {
-                name = "llama3-groq-tool-use:8b";
-                display_name = "Llama 3 Groq Tool Use 8B";
-                max_tokens = 16384;
-                supports_tools = true;
-              }
-              {
-                name = "qwen2.5-coder:14b";
-                display_name = "Qwen 2.5 Coder 14B";
-                max_tokens = 32768;
+                model = "qwen2.5-7b-instruct";
+                display_name = "Qwen Instruct";
+                max_tokens = 8192;
                 supports_tools = true;
               }
             ];
@@ -96,7 +90,7 @@
       agent = {
         default_model = {
           provider = "openai";
-          model = "llama3-groq-tool-use:8b";
+          model = "qwen2.5-7b-instruct";llama-3-8b-instruct";
         };
         tools = {
           terminal = true;
