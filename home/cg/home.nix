@@ -90,7 +90,7 @@
       agent = {
         default_model = {
           provider = "openai";
-          model = "qwen2.5-7b-instruct";llama-3-8b-instruct";
+          model = "qwen2.5-7b-instruct";
         };
         tools = {
           terminal = true;
