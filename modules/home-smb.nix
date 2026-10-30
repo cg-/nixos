@@ -31,6 +31,7 @@ let
 in {
   environment.systemPackages = [ pkgs.cifs-utils ];
   boot.kernelModules = [ "cifs" ];
+  boot.supportedFilesystems = [ "cifs" ];
 
   sops.secrets.smb_password = {};
   sops.secrets.smb_username = {};
