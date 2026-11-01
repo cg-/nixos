@@ -21,6 +21,11 @@
     age.keyFile = "/var/lib/sops-nix/keys.txt";
   };
 
+  # swapfile
+  swapDevices = [{
+    device = "/dev/zvol/zroot/swap";
+  }];
+
   # ZFS and Bootloader Settings
   boot.zfs.forceImportRoot = false;
   networking.hostId = "84251a3f";
@@ -29,11 +34,10 @@
   services.zfs.trim.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "i915.force_probe=!*"
     "xe.force_probe=*"
-    "consoleblank=0"
+    "zfs.zfs_arc_max=2147483648"
   ];
 
   networking.hostName = "swift";
@@ -46,10 +50,13 @@
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
+      vpl-gpu-rt
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
     ];
   };
   services.hardware.bolt.enable = true;
-  services.xserver.videoDrivers = ["amdgpu" ];
 
   # System Packages for the Laptop environment
   environment.systemPackages = with pkgs; [
