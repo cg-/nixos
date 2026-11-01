@@ -35,6 +35,9 @@
     "xe.force_probe=*"
     "zfs.zfs_arc_max=8589934592"
   ];
+  swapDevices = [{
+    device = "/dev/zvol/zroot/swap";
+  }];
 
   networking.hostName = "metal";
   time.timeZone = "US/Central";
