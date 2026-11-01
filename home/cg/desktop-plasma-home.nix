@@ -15,6 +15,25 @@
     };
   };
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+        padding = { x = 12; y = 12; };
+        opacity = 0.95;
+      };
+      font = {
+        size = 12.0;
+        normal = { family = "JetBrainsMono Nerd Font"; style = "Regular"; };
+        bold   = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
+      };
+      colors = {
+        primary = { background = "#1a1b26"; foreground = "#c0caf5"; };
+        # (Tokyo Night palette...)
+      };
+    };
+  };
+
   programs.plasma = {
     enable = true;
     workspace = {
@@ -58,6 +77,7 @@
       }
     ];
 
+
     shortcuts = {
       "services/org.kde.konsole.desktop"."_launch" = "none";
     };
@@ -67,5 +87,6 @@
       key = "Ctrl+Alt+T";
       command = "alacritty";
     };
+
   };
 }

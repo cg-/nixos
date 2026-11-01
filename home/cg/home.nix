@@ -102,6 +102,14 @@
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
+    settings = lib.mkMerge [
+      (builtins.fromTOML (builtins.readFile "${pkgs.starship}/share/starship/presets/tokyo-night.toml"))
+      
+      # Optional: Add custom overrides here if needed
+      {
+        # add_newline = false;
+      }
+    ];
   };
 
   programs.bash = {
@@ -140,5 +148,6 @@
     aria2
     cacert
     just
+    nerd-fonts.jetbrains-mono
   ];
 }
