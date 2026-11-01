@@ -14,8 +14,21 @@
     freerdp
     remmina
     obsidian
-    onlyoffice
+    onlyoffice-desktopeditors
   ];
+
+  # needed for onlyoffice fonts
+  system.userActivationScripts = {
+    copy-fonts-local-share = {
+      text = ''
+        rm -rf ~/.local/share/fonts
+        mkdir -p ~/.local/share/fonts
+        cp ${pkgs.corefonts}/share/fonts/truetype/* ~/.local/share/fonts/
+        chmod 544 ~/.local/share/fonts
+        chmod 444 ~/.local/share/fonts/*
+      '';
+    };
+  };
 
   environment.etc."opt/edge/policies/managed/default_search_engine.json".text = builtins.toJSON {
     DefaultSearchProviderEnabled = true;

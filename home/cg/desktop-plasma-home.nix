@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, lib, ... }: {
   imports = [
     ./home.nix
     inputs.plasma-manager.homeModules.plasma-manager
@@ -14,16 +14,6 @@
       "x-scheme-handler/unknown" = "microsoft-edge.desktop";
     };
   };
-
-  ## for only office
-  home.activation = (lib.optionalAttrs installOnlyOffice {
-    copy-fonts-local-share = ''
-      mkdir -p ~/.local/share/fonts
-      cp -u ${pkgs.corefonts}/share/fonts/truetype/* ~/.local/share/fonts/
-      chmod 544 ~/.local/share/fonts
-      chmod 444 ~/.local/share/fonts/*
-   '';
-  });
 
   programs.plasma = {
     enable = true;
