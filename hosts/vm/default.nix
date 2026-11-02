@@ -9,6 +9,7 @@
     ../../modules/desktop-apps.nix
     ../../modules/user-cg.nix
     (modulesPath + "/profiles/qemu-guest.nix")
+    ../../modules/garbage-collection.nix
   ];
   nixpkgs.config.allowUnfree = true;
   services.qemuGuest.enable = true;

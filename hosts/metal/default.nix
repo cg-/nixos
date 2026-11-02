@@ -12,6 +12,7 @@
     ../../modules/desktop-dev.nix
     ../../modules/desktop-virt.nix
     ../../modules/user-cg.nix
+    ../../modules/garbage-collection.nix
   ];
   nixpkgs.config.allowUnfree = true;
 

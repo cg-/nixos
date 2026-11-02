@@ -2,6 +2,7 @@
   imports = [ 
       ../../modules/ssh-secret.nix 
       ../../modules/user-cg.nix 
+      ../../modules/garbage-collection.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
