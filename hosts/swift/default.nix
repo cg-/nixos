@@ -51,6 +51,9 @@
   };
   services.power-profiles-daemon.enable = false;
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   networking.hostName = "swift";
   time.timeZone = "US/Central";
 
