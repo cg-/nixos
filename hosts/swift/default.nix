@@ -39,6 +39,17 @@
     "xe.force_probe=*"
     "zfs.zfs_arc_max=2147483648"
   ];
+  boot.kernelModules = [ "acer-wmi" ];
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+      PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_BATTERY = "low-power";
+    };
+  };
+  services.power-profiles-daemon.enable = false;
 
   networking.hostName = "swift";
   time.timeZone = "US/Central";
