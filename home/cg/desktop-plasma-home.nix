@@ -40,6 +40,7 @@
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
       wallpaper = ../../assets/wallpaper.png;
+      wallpaperPlugin = "org.kde.image";
     };
 
     configFile = {
